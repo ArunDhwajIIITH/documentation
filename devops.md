@@ -128,4 +128,13 @@ chmod 600 ~/.ssh/id_github_*
 chmod 644 ~/.ssh/config
 
 
+## 9. Set global username and email
 
+git config --list  # Shows all settings (global + local)
+
+git config --global user.name "ArunDhwajIIITH" # Checks only global
+
+git config --local --get user.name   # Checks only the current repo
+
+
+ 
