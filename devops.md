@@ -31,14 +31,14 @@ nano ~/.ssh/config
 
 3.2) Add the following entries (replace personal.github.com and work.github.com with aliases of your choice):
 
-### //Personal GitHub Account
+#### //Personal GitHub Account
 Host personal.github.com
     HostName github.com
     User git
     IdentityFile ~/.ssh/id_github_personal
     IdentitiesOnly yes
 
-### //Work GitHub Account
+#### //Work GitHub Account
 Host work.github.com
     HostName github.com
     User git
@@ -63,7 +63,7 @@ Hi <username>! You've successfully authenticated...
 
 5.1) Use the custom host aliases when cloning:
 
-### //Personal repo
+#### //Personal repo
 git clone git@personal.github.com:personal_username/repo.git
 
 #### //Work repo
@@ -87,11 +87,11 @@ git remote set-url origin git@work.github.com:work_username/repo.git
 
 7.1) Set the user.name and user.email per repository to match commits:
 
-# For personal repos
+#### For personal repos
 git config user.name "Personal Name"
 git config user.email "personal@email.com"
 
-# For work repos
+#### For work repos
 git config user.name "Work Name"
 git config user.email "work@email.com"
 
@@ -100,10 +100,6 @@ git config user.email "work@email.com"
 
 chmod 600 ~/.ssh/id_github_*
 chmod 644 ~/.ssh/config
-
-
-
-
 
 
 
