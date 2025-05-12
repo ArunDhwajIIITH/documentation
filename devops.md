@@ -138,20 +138,32 @@ git config --local --get user.name   # Checks only the current repo
 
 ## 10.. config file sample
 
-# ~/.ssh/config
+
+ ~/.ssh/config
+
 
 # ArunDhwajIIITH ( arundhwajiiith@gmail.com) GitHub Account
+
 Host arun
+
   HostName github.com
+
   User git
+
   IdentityFile ~/.ssh/id_github_arun
+
   IdentitiesOnly yes
+
 
 #work
-Host work
-  HostName github.com
-  User git
-  IdentityFile ~/.ssh/id_github_work
-  IdentitiesOnly yes
 
+Host work
+
+  HostName github.com
+
+  User git
+
+  IdentityFile ~/.ssh/id_github_work
+
+  IdentitiesOnly yes
  
