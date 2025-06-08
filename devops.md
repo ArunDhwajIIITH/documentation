@@ -3,7 +3,7 @@
 
 ## 1. Generate SSH Keys for Each Account
 
-1.1) Open a terminal and run:
+### 1.1) Open a terminal and run:
 
 ssh-keygen -t ed25519 -C "personal@email.com" -f ~/.ssh/id_github_personal
 
@@ -11,7 +11,7 @@ Example:
 
 ssh-keygen -t ed25519 -C "arundhwajiiith@gmail.com" -f ~/.ssh/id_github_arun
 
-1.2) Press Enter to leave the passphrase empty (or set one if preferred).
+### 1.2) Press Enter to leave the passphrase empty (or set one if preferred).
 
 ....
 
@@ -21,7 +21,7 @@ It will create two files:
 
 ~/.ssh/id_github_arun.pub
 
-## 1.3) Edit/Create ~/.ssh/config 
+### 1.3) Edit/Create ~/.ssh/config 
 
 nano ~/.ssh/config
 
@@ -51,7 +51,7 @@ Host work
     IdentitiesOnly yes
 
 
-## 1.4) Change the Permissions: Ensure SSH files have correct permissions
+### 1.4) Change the Permissions: Ensure SSH files have correct permissions
 
 a) chmod 600 ~/.ssh/id_github_*
 
@@ -87,58 +87,33 @@ $ ssh -T git@arun
 >> Hi <username>! You've successfully authenticated...
 
 
-## 4) Clone Repositories Using SSH Aliases
+## 4.1) Set global username and email ==> It has global effect. Means into all the repositories on the local machine.
 
-4.1) Use the custom host aliases when cloning:
+a) git config --list  # Shows all settings (global + local)
 
-#### //documentation repo in personal account: 
+>> Display the global config
 
-git clone git@arun:personal_username/documentation.git
+b) git config --global user.name "ArunDhwajIIITH" # Checks only global
 
-Example: 
-
-$ git clone git@arun:ArunDhwajIIITH/repo.git
+c) git config --global --get user.email  "arundhwajiiith@gmail.com" 
 
 
-## 5) Update Existing Repository Remotes
+## 5) Clone Repositories Using SSH Aliases
 
-5.1) If you have existing repos, update their remote URLs:
+### 5.1) Very important: Use the custom host aliases when cloning:
 
+a) Login to github account,
 
-cd /path/to/personal-repo
+b) select the Organisation,
 
-git remote set-url origin git@personal.github.com:personal_username/repo.git
+c) select the repository -- > Go on <code> --> Local --> clone --> ssh --> click on copy
 
+>> git@github.com:sbpenterprise5thattempt/sbp-vc-frontend-new.git
 
-cd /path/to/work-repo
+d) Very important change it to 
 
-git remote set-url origin git@work.github.com:work_username/repo.git
-
-
-## 6) Optional: Configure Local Git User Info
-
-6.1) Set the user.name and user.email per repository to match commits:
-
-#### For personal repos
-
-a) git config user.name "Personal Name"
-
-Example: 
-
-$ git config user.name "Arun Dhwaj"
-
-b) git config user.email "personal@email.com"
-
-Example:
-
-$ git config user.email "arundhwajiiith@email.com"
+$ git clone git@arun:sbpenterprise5thattempt/sbp-vc-frontend-new.git
 
 
-## 7) Set global username and email
-
-git config --list  # Shows all settings (global + local)
-
-git config --global user.name "ArunDhwajIIITH" # Checks only global
-
-git config --local --get user.name   # Checks only the current repo
+e) Do the needful change in repo. Add, commit, push
 
