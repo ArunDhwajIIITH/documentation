@@ -27,7 +27,7 @@ nano ~/.ssh/config
 
 #### //Personal GitHub Account
 
-Host arun
+Host arun     /// Very important: Here alias name is "arun"  
 
     HostName github.com
 
@@ -40,7 +40,7 @@ Host arun
 
 #### //Work GitHub Account
 
-Host work
+Host work   /// Very important: Here alias name is "work"
 
     HostName github.com
 
@@ -108,9 +108,10 @@ b) select the Organisation,
 
 c) select the repository -- > Go on <code> --> Local --> clone --> ssh --> click on copy
 
->> git@github.com:sbpenterprise5thattempt/sbp-vc-frontend-new.git
+git@github.com:sbpenterprise5thattempt/sbp-vc-frontend-new.git
 
-d) Very important change it to 
+
+d) Very important change it to alias name 'arun' (see: section: 1.3 )
 
 $ git clone git@arun:sbpenterprise5thattempt/sbp-vc-frontend-new.git
 
