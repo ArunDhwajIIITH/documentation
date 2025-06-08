@@ -7,49 +7,40 @@
 
 ssh-keygen -t ed25519 -C "personal@email.com" -f ~/.ssh/id_github_personal
 
-ssh-keygen -t ed25519 -C "work@email.com" -f ~/.ssh/id_github_work
+Example: 
 
+ssh-keygen -t ed25519 -C "arundhwajiiith@gmail.com" -f ~/.ssh/id_github_arun
 
 1.2) Press Enter to leave the passphrase empty (or set one if preferred).
 
+....
 
-## 2. Add SSH Keys to GitHub Accounts
+It will create two files:
 
-2.1) Display the public keys and copy them:
+~/.ssh/id_github_arun
 
-cat ~/.ssh/id_github_personal.pub
+~/.ssh/id_github_arun.pub
 
-cat ~/.ssh/id_github_work.pub
-
-
-2.2) Go to GitHub → Settings → SSH and GPG Keys for each account and add the respective keys.
-
-
-## 3. Configure SSH to Handle Multiple Keys
-
-3.1) Create/edit the SSH config file:
+## 1.3) Edit/Create ~/.ssh/config 
 
 nano ~/.ssh/config
 
-
-3.2) Add the following entries (replace personal.github.com and work.github.com with aliases of your choice):
-
 #### //Personal GitHub Account
 
-Host personal.github.com
+Host arun
 
     HostName github.com
 
     User git
 
-    IdentityFile ~/.ssh/id_github_personal
+    IdentityFile ~/.ssh/id_github_arun
 
     IdentitiesOnly yes
 
 
 #### //Work GitHub Account
 
-Host work.github.com
+Host work
 
     HostName github.com
 
@@ -60,37 +51,58 @@ Host work.github.com
     IdentitiesOnly yes
 
 
-## 4. Test the SSH Connections
+## 1.4) Change the Permissions: Ensure SSH files have correct permissions
 
-4.1) Verify authentication for both accounts:
+a) chmod 600 ~/.ssh/id_github_*
 
-ssh -T git@personal.github.com
+b) chmod 644 ~/.ssh/config
 
-ssh -T git@work.github.com
-
-
-4.2) You should see success messages like:
-
-Hi <username>! You've successfully authenticated...
+c) $ chmod 600 ~/.ssh
 
 
-## 5. Clone Repositories Using SSH Aliases
+## 2) Updating the data on github: Add SSH Keys to GitHub Accounts
 
-5.1) Use the custom host aliases when cloning:
+2.1) Display the public keys and copy them:
 
-#### //Personal repo
+cat ~/.ssh/id_github_arun.pub
 
-git clone git@personal.github.com:personal_username/repo.git
+2.2) Login to GitHub: 
+
+(profile picure/icon) - -> Settings --> SSH and GPG Keys for each account and add the respective keys.
+
+2.3) Click on "New SSH Key"(Location: top right corner)
+
+2.4) Add the followings:
+a) Title: Enter suitable title,
+b) Key type: select "Authentication key"
+c) key: paste ( the data copied from 'cat ~/.ssh/id_github_arun.pub' )
 
 
-#### //Work repo
+## 3) Test the SSH Connections
 
-git clone git@work.github.com:work_username/repo.git
+3.1) Verify authentication for personal account: <arun>:
+
+$ ssh -T git@arun
+
+>> Hi <username>! You've successfully authenticated...
 
 
-## 6. Update Existing Repository Remotes
+## 4) Clone Repositories Using SSH Aliases
 
-6.1) If you have existing repos, update their remote URLs:
+4.1) Use the custom host aliases when cloning:
+
+#### //documentation repo in personal account: 
+
+git clone git@arun:personal_username/documentation.git
+
+Example: 
+
+$ git clone git@arun:ArunDhwajIIITH/repo.git
+
+
+## 5) Update Existing Repository Remotes
+
+5.1) If you have existing repos, update their remote URLs:
 
 
 cd /path/to/personal-repo
@@ -103,32 +115,26 @@ cd /path/to/work-repo
 git remote set-url origin git@work.github.com:work_username/repo.git
 
 
-## 7. Optional: Configure Local Git User Info
+## 6) Optional: Configure Local Git User Info
 
-7.1) Set the user.name and user.email per repository to match commits:
+6.1) Set the user.name and user.email per repository to match commits:
 
 #### For personal repos
 
-git config user.name "Personal Name"
+a) git config user.name "Personal Name"
 
-git config user.email "personal@email.com"
+Example: 
 
+$ git config user.name "Arun Dhwaj"
 
-#### For work repos
+b) git config user.email "personal@email.com"
 
-git config user.name "Work Name"
+Example:
 
-git config user.email "work@email.com"
-
-
-## 8. Permissions: Ensure SSH files have correct permissions
-
-chmod 600 ~/.ssh/id_github_*
-
-chmod 644 ~/.ssh/config
+$ git config user.email "arundhwajiiith@email.com"
 
 
-## 9. Set global username and email
+## 7) Set global username and email
 
 git config --list  # Shows all settings (global + local)
 
@@ -136,34 +142,3 @@ git config --global user.name "ArunDhwajIIITH" # Checks only global
 
 git config --local --get user.name   # Checks only the current repo
 
-## 10.. config file sample
-
-
- ~/.ssh/config
-
-
-# ArunDhwajIIITH ( arundhwajiiith@gmail.com) GitHub Account
-
-Host arun
-
-  HostName github.com
-
-  User git
-
-  IdentityFile ~/.ssh/id_github_arun
-
-  IdentitiesOnly yes
-
-
-#work
-
-Host work
-
-  HostName github.com
-
-  User git
-
-  IdentityFile ~/.ssh/id_github_work
-
-  IdentitiesOnly yes
- 
